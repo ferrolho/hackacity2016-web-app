@@ -21,33 +21,71 @@
 @push('scripts')
 <script>
 
+    var labels = {!! json_encode($labels) !!};
+
+    var co_data = {!! json_encode($co_data) !!};
+    var no2_data = {!! json_encode($no2_data) !!};
+    var proc_no2_data = {!! json_encode($proc_no2_data) !!};
+    var o3_data = {!! json_encode($o3_data) !!};
+    var proc_o3_data = {!! json_encode($proc_o3_data) !!};
+
     var ctx = $("#dataChart");
 
-    var myChart = new Chart(ctx, {
+    var dataChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: labels,
             datasets: [
                 {
-                    label: "My First dataset",
+                    label: 'CO',
                     fill: false,
                     lineTension: 0,
-                    backgroundColor: "rgba(75,192,192,0.4)",
-                    borderColor: "rgba(75,192,192,1)",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: "rgba(75,192,192,1)",
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    backgroundColor: '#888',
+                    borderColor: '#000',
+                    pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHitRadius: 10,
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    pointRadius: 4,
+                    data: co_data
+                }, {
+                    label: 'NO2',
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: '#88f',
+                    borderColor: '#00f',
+                    pointBackgroundColor: '#fff',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    data: no2_data
+                }, {
+                    label: 'NO2 Processado',
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: '#44b',
+                    borderColor: '#00b',
+                    pointBackgroundColor: '#fff',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    data: proc_no2_data
+                }, {
+                    label: 'O3 (/100)',
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: '#f88',
+                    borderColor: '#f00',
+                    pointBackgroundColor: '#fff',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    data: o3_data
+                }, {
+                    label: 'O3 Processado',
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: '#b44',
+                    borderColor: '#b00',
+                    pointBackgroundColor: '#fff',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 4,
+                    data: proc_o3_data
                 }
             ]
         },
