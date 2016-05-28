@@ -10,7 +10,11 @@ use App\Http\Requests;
 class EnvDataController extends Controller {
 
     public function graphs() {
-        $envData = EnvData::orderBy('timestamp')->get();
+        $coord_x = EnvData::all()->first()->coord_x;
+
+        $envData = EnvData::where('coord_x', $coord_x)
+            ->orderBy('timestamp')
+            ->get();
 
         $labels = [];
 
