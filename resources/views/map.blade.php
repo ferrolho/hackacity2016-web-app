@@ -16,7 +16,9 @@
                 <form class="text-center">
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input id="range-slider" type="text" data-slider-value="5">
+                            <input id="range-slider" type="text" data-slider-min="0" data-slider-max="{{ $hours }}"
+                                   data-slider-value="{{ $hours }}" data-slider-ticks='[0, {{ $hours }}]'
+                                   data-slider-ticks-labels='["{{ $firstTimestamp }}", "{{ $lastTimestamp }}"]'>
                         </div>
 
                         <div class="clearfix"></div>
@@ -34,6 +36,7 @@
 <script>
 
     var ozoneLevels = {!! json_encode($ozoneLevels) !!};
+    var firstTimestamp = {!! json_encode($firstTimestamp) !!};
 
     for (var i in ozoneLevels) {
         ozoneLevels[i]['coords']['lat'] = parseFloat(ozoneLevels[i]['coords']['lat']);
@@ -65,13 +68,22 @@
     }
 
     var rangeSlider = $('#range-slider').slider({
+        formatter: function (value) {
+            var d = new Date(firstTimestamp);
+
+            d.setHours(d.getHours() + value);
+
+            var sliderVal = d.getFullYear() + '-' + to2digits(d.getMonth() + 1) + '-' + to2digits(d.getDate()) + " " + to2digits(d.getHours()) + ":" + to2digits(d.getMinutes()) + ":" + to2digits(d.getSeconds());
+
+            return sliderVal;
+        },
         id: "range-slider",
-        min: -10,
-        max: 10,
-        step: 0.01,
-        ticks: [-10, 0, 10],
-        ticks_labels: ['-10', '0', '10']
+        step: 1
     });
+
+    function to2digits(number) {
+        return ('0' + number).slice(-2);
+    }
 
 </script>
 @endpush
