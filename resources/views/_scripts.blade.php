@@ -6,3 +6,7 @@
 
 <!-- Chart.js -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+<!-- Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0JGsDSVA9TJd8zX--UBX5zn712cvmUes&callback=initMap"
+        async defer></script>

@@ -26,6 +26,14 @@ body {
 }
 
 /*
+* Map page
+*/
+
+#map {
+    height: 70vh;
+}
+
+/*
 * Footer
 */
 

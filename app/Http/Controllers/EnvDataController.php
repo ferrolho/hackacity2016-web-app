@@ -46,4 +46,8 @@ class EnvDataController extends Controller {
         ));
     }
 
+    public function map() {
+        return view('map');
+    }
+
 }

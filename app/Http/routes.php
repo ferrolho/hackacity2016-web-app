@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('graphs', 'EnvDataController@graphs');
+
+Route::get('map', 'EnvDataController@map');
