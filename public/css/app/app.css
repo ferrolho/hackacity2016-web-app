@@ -30,7 +30,12 @@ body {
 */
 
 #map {
-    height: 70vh;
+    height: 60vh;
+}
+
+#range-slider {
+    margin-top: 20px;
+    width: 100%;
 }
 
 /*

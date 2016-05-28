@@ -6,11 +6,23 @@
         <div class="row">
 
             <div class="col-xs-12">
+
                 <h2 class="text-center">Toxic Gases Map</h2>
 
                 <hr>
 
                 <div id="map"></div>
+
+                <form class="text-center">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input id="range-slider" type="text" data-slider-value="5">
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+
             </div>
 
         </div>
@@ -51,6 +63,15 @@
         }
 
     }
+
+    var rangeSlider = $('#range-slider').slider({
+        id: "range-slider",
+        min: -10,
+        max: 10,
+        step: 0.01,
+        ticks: [-10, 0, 10],
+        ticks_labels: ['-10', '0', '10']
+    });
 
 </script>
 @endpush

@@ -17,6 +17,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- bootstrap-slider.js -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.min.css" rel="stylesheet">
+
     <!-- This App styles -->
     <link href="{{ url('css/app/app.css') }}" rel="stylesheet">
 
