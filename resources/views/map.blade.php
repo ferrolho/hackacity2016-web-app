@@ -38,20 +38,31 @@
     var ozoneLevels = {!! json_encode($ozoneLevels) !!};
     var firstTimestamp = {!! json_encode($firstTimestamp) !!};
 
-    for (var i in ozoneLevels) {
-        ozoneLevels[i]['coords']['lat'] = parseFloat(ozoneLevels[i]['coords']['lat']);
-        ozoneLevels[i]['coords']['lng'] = parseFloat(ozoneLevels[i]['coords']['lng']);
-    }
+    prepareLatAndLng(ozoneLevels);
+
+    var map, sensorCircles = [];
 
     function initMap() {
 
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 41.2080688477, lng: -8.39911651611},
             scrollwheel: false,
             zoom: 10
         });
 
-        for (var sensorData in ozoneLevels) {
+        drawCircles(ozoneLevels);
+
+    }
+
+    function prepareLatAndLng(data) {
+        for (var i in data) {
+            data[i]['coords']['lat'] = parseFloat(data[i]['coords']['lat']);
+            data[i]['coords']['lng'] = parseFloat(data[i]['coords']['lng']);
+        }
+    }
+
+    function drawCircles(circlesData) {
+        for (var sensorData in circlesData) {
             var sensorCircle = new google.maps.Circle({
                 strokeColor: '#FF0000',
                 strokeOpacity: 0.6,
@@ -60,11 +71,12 @@
                 fillOpacity: 0.2,
                 map: map,
 
-                center: ozoneLevels[sensorData].coords,
-                radius: Math.sqrt(ozoneLevels[sensorData].o3) * 100
+                center: circlesData[sensorData].coords,
+                radius: Math.sqrt(circlesData[sensorData].o3) * 100
             });
-        }
 
+            sensorCircles.push(sensorCircle);
+        }
     }
 
     var rangeSlider = $('#range-slider').slider({
@@ -84,6 +96,33 @@
     function to2digits(number) {
         return ('0' + number).slice(-2);
     }
+
+    $(document).ready(function () {
+
+        $('#range-slider').on('change', function (e) {
+            clearPreviousCircles();
+
+            $.ajax({
+                url: '/getSensorData/' + rangeSlider.slider('getValue'),
+                dataType: 'json'
+            }).done(function (data) {
+                prepareLatAndLng(data);
+                drawCircles(data);
+            }).fail(function () {
+                alert('Failed to fetch sensors info.');
+            });
+
+            e.preventDefault();
+        });
+
+        function clearPreviousCircles() {
+            for (var i in sensorCircles)
+                sensorCircles[i].setMap(null);
+
+            sensorCircles = [];
+        }
+
+    });
 
 </script>
 @endpush

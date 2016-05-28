@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('graphs', 'EnvDataController@graphs');
 
 Route::get('map', 'EnvDataController@map');
+
+Route::get('getSensorData/{hours}', 'EnvDataController@getSensorData');

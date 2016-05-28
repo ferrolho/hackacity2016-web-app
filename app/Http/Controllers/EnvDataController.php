@@ -70,4 +70,26 @@ class EnvDataController extends Controller {
         return view('map', compact('ozoneLevels', 'firstTimestamp', 'lastTimestamp', 'hours'));
     }
 
+    public function getSensorData($hours) {
+        $firstTimestamp = EnvData::orderBy('timestamp')->first()->timestamp;
+
+        $timestamp = date("Y-m-d H:i:s.0", strtotime($firstTimestamp) + $hours * 3600);
+
+        $timestamp = EnvData::where('timestamp', '>=', $timestamp)->first()->timestamp;
+
+        $data = EnvData::where('timestamp', $timestamp)->get();
+
+        $ozoneLevels = [];
+
+        foreach ($data as $item) {
+            $sensorData['coords']['lng'] = $item->coord_x;
+            $sensorData['coords']['lat'] = $item->coord_y;
+            $sensorData['o3'] = $item->o3;
+
+            array_push($ozoneLevels, $sensorData);
+        }
+
+        return $ozoneLevels;
+    }
+
 }
