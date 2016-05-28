@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 #content {
@@ -22,6 +22,7 @@ body {
 */
 
 #dataChartContainer {
+    height: 70vh;
 }
 
 /*
@@ -31,6 +32,6 @@ body {
 .footer {
     bottom: 0;
     position: absolute;
-    height: 40px;
+    height: 30px;
     width: 100%;
 }

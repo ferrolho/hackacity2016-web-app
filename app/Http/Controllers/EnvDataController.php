@@ -23,11 +23,11 @@ class EnvDataController extends Controller {
         foreach ($envData as $item) {
             array_push($labels, $item->timestamp);
 
-            array_push($co_data, $item->co);
-            array_push($no2_data, $item->no2);
-            array_push($proc_no2_data, $item->proc_no2);
-            array_push($o3_data, $item->o3 / 100.0);
-            array_push($proc_o3_data, $item->proc_o3);
+            array_push($co_data, $item->co == 0 ? null : $item->co);
+            array_push($no2_data, $item->no2 == 0 ? null : $item->no2);
+            array_push($proc_no2_data, $item->proc_no2 == 0 ? null : $item->proc_no2);
+            array_push($o3_data, $item->o3 / 100.0 == 0 ? null : $item->o3 / 100.0);
+            array_push($proc_o3_data, $item->proc_o3 == 0 ? null : $item->proc_o3);
         }
 
         return view('graphs', compact(

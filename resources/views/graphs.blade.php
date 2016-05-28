@@ -5,9 +5,11 @@
     <div id="content" class="container">
         <div class="row">
 
-            <h2>Hello, World!</h2>
+            <div class="col-xs-12">
+                <h2 class="text-center">Toxic Gases Line Chart</h2>
 
-            <div class="col-xs-12 col-md-4">
+                <hr>
+
                 <div id="dataChartContainer">
                     <canvas id="dataChart" width="400" height="400"></canvas>
                 </div>
@@ -28,6 +30,11 @@
     var proc_no2_data = {!! json_encode($proc_no2_data) !!};
     var o3_data = {!! json_encode($o3_data) !!};
     var proc_o3_data = {!! json_encode($proc_o3_data) !!};
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    Chart.defaults.global.responsive = true;
+    Chart.defaults.global.maintainAspectRatio = false;
 
     var ctx = $("#dataChart");
 
