@@ -95,15 +95,6 @@
                     data: proc_o3_data
                 }
             ]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 
