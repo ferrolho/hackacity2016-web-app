@@ -39,14 +39,14 @@
         for (var sensorData in ozoneLevels) {
             var sensorCircle = new google.maps.Circle({
                 strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
+                strokeOpacity: 0.6,
                 strokeWeight: 2,
                 fillColor: '#FF0000',
-                fillOpacity: 0.35,
+                fillOpacity: 0.2,
                 map: map,
 
                 center: ozoneLevels[sensorData].coords,
-                radius: Math.sqrt(ozoneLevels[sensorData].o3) * 256
+                radius: Math.sqrt(ozoneLevels[sensorData].o3) * 100
             });
         }
 
