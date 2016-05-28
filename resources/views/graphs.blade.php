@@ -7,7 +7,7 @@
 
             <h2>Hello, World!</h2>
 
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-md-4">
                 <div id="dataChartContainer">
                     <canvas id="dataChart" width="400" height="400"></canvas>
                 </div>
