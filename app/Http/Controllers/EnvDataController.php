@@ -61,6 +61,8 @@ class EnvDataController extends Controller {
             array_push($ozoneLevels, $sensorData);
         }
 
+        dd($ozoneLevels);
+
         return view('map', compact('ozoneLevels'));
     }
 
