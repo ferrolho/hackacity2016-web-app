@@ -51,7 +51,7 @@
                     borderColor: '#000',
                     pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 4,
+                    pointRadius: 2,
                     data: co_data
                 }, {
                     label: 'NO2',
@@ -61,7 +61,7 @@
                     borderColor: '#00f',
                     pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 4,
+                    pointRadius: 2,
                     data: no2_data
                 }, {
                     label: 'NO2 Processado',
@@ -71,7 +71,7 @@
                     borderColor: '#00b',
                     pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 4,
+                    pointRadius: 2,
                     data: proc_no2_data
                 }, {
                     label: 'O3 (/100)',
@@ -81,7 +81,7 @@
                     borderColor: '#f00',
                     pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 4,
+                    pointRadius: 2,
                     data: o3_data
                 }, {
                     label: 'O3 Processado',
@@ -91,7 +91,7 @@
                     borderColor: '#b00',
                     pointBackgroundColor: '#fff',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 4,
+                    pointRadius: 2,
                     data: proc_o3_data
                 }
             ]
