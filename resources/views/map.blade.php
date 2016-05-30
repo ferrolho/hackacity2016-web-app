@@ -100,13 +100,13 @@
     $(document).ready(function () {
 
         $('#range-slider').on('change', function (e) {
-            clearPreviousCircles();
-
             $.ajax({
                 url: '/getSensorData/' + rangeSlider.slider('getValue'),
                 dataType: 'json'
             }).done(function (data) {
                 prepareLatAndLng(data);
+
+                clearPreviousCircles();
                 drawCircles(data);
             }).fail(function () {
                 alert('Failed to fetch sensors info.');
